@@ -346,7 +346,11 @@ public class RNBluetoothEscposPrinterModule extends ReactContextBaseJavaModule
             sendDataByte(Command.LF);
             sendDataByte(data);
             sendDataByte(PrinterCommand.POS_Set_PrtAndFeedPaper(30));
-            sendDataByte(PrinterCommand.POS_Set_Cut(1));
+            /**
+             * Fix suggested by github issues
+             * Ref: https://github.com/januslo/react-native-bluetooth-escpos-printer/issues/34#issuecomment-470929256
+             */
+            // sendDataByte(PrinterCommand.POS_Set_Cut(1));
             sendDataByte(PrinterCommand.POS_Set_PrtInit());
         }
     }
